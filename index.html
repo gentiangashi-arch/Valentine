@@ -12,72 +12,107 @@
       justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, pink, hotpink);
-      overflow: hidden;
       text-align: center;
+      background: url('https://images.unsplash.com/photo-1612197511214-fc5b708fc6ef?auto=format&fit=crop&w=1470&q=80') no-repeat center center;
+      background-size: cover;
+      backdrop-filter: blur(6px);
+      position: relative;
+      overflow: hidden;
     }
 
     h1 {
       color: white;
-      font-size: 3em;
+      font-size: 2.5em;
+      text-shadow: 0 0 10px #ff4d6d;
+      margin-bottom: 40px;
     }
 
     button {
       font-size: 1.5em;
       padding: 15px 30px;
-      margin: 20px;
+      margin: 10px;
       border: none;
       border-radius: 10px;
       cursor: pointer;
     }
 
     #yes {
-  background: white;
-  color: hotpink;
-  display: block;      /* sorgt dafür, dass die Buttons untereinander stehen */
-  margin: 0 auto;      /* zentriert horizontal */
-  margin-bottom: 20px; /* Abstand nach unten */
-}
+      background: white;
+      color: hotpink;
+      display: block;
+      margin: 0 auto 20px auto; /* Abstand nach unten für Nein */
+    }
 
-#no {
-  background: #ff4d6d;
+    #no {
+      background: #ff4d6d;
+      color: white;
+      display: block;
+      margin: 0 auto;
+      position: relative; /* springt bei mouseover */
+    }
+    #noHint {
+  font-size: 0.9em;
   color: white;
-  display: block;
-  margin: 0 auto;       /* zentriert unterhalb der Ja-Taste */
-  margin-top: 10px;     /* Abstand über der Nein-Taste */
-  position: relative;   /* damit der Sprung-Effekt via JS noch funktioniert */
+  text-align: center;
+  margin-top: 5px; /* kleiner Abstand unter dem Button */
+  text-shadow: 0 0 5px #ff4d6d; /* optional, damit es auf Hintergrund gut lesbar ist */
+  pointer-events: none; /* verhindert, dass man den Text anklicken kann */
 }
 
+
+    /* Rosenblätter */
+    .rose {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Rose_petals.png/64px-Rose_petals.png') no-repeat center center;
+      background-size: contain;
+      top: -60px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
   </style>
 </head>
 <body>
 
-  <h1>Will you be my Valentine? 💖</h1>
+  <h1>Willst you be my Valentine? 💖</h1>
 
-  <button id="yes" onclick="alert('YAAAY!! 💕🥰💘')">
-    Ja 💘
-  </button>
+  <button id="yes">Ja 💘</button>
+  <button id="no">Nein 💔</button>
+  <p id="noHint">versuch es erst gar nicht 😉</p>
 
-  <button id="no">
-    Nein 💔
-  </button>
+  <!-- Rosenblätter -->
+  <div class="rose" style="left: 10%; animation-duration: 8s;"></div>
+  <div class="rose" style="left: 30%; animation-duration: 10s;"></div>
+  <div class="rose" style="left: 50%; animation-duration: 12s;"></div>
+  <div class="rose" style="left: 70%; animation-duration: 9s;"></div>
+  <div class="rose" style="left: 90%; animation-duration: 11s;"></div>
 
   <script>
+    // Nein-Button springen lassen
     const noBtn = document.getElementById("no");
 
-function moveButton() {
-  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-  noBtn.style.position = "absolute";  // position absolut beim Sprung
-  noBtn.style.left = `${x}px`;
-  noBtn.style.top = `${y}px`;
-}
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.position = "absolute";
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    }
 
-noBtn.addEventListener("mouseover", moveButton);
-noBtn.addEventListener("touchstart", moveButton);
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("touchstart", moveButton);
+
+    // Ja-Button klick
+    const yesBtn = document.getElementById("yes");
+    yesBtn.addEventListener("click", () => {
+      alert('💖 Für immer mein Valentine!');
+    });
   </script>
 
 </body>
 </html>
-
-
