@@ -13,9 +13,7 @@
       align-items: center;
       font-family: Arial, sans-serif;
       text-align: center;
-      background: url('https://images.unsplash.com/photo-1612197511214-fc5b708fc6ef?auto=format&fit=crop&w=1470&q=80') no-repeat center center;
-      background-size: cover;
-      backdrop-filter: blur(6px);
+      background: linear-gradient(135deg, pink, hotpink);
       position: relative;
       overflow: hidden;
     }
@@ -40,7 +38,7 @@
       background: white;
       color: hotpink;
       display: block;
-      margin: 0 auto 20px auto; /* Abstand nach unten für Nein */
+      margin: 0 auto 20px auto;
     }
 
     #no {
@@ -48,19 +46,18 @@
       color: white;
       display: block;
       margin: 0 auto;
-      position: relative; /* springt bei mouseover */
+      position: relative;
     }
+
     #noHint {
-  font-size: 0.9em;
-  color: white;
-  text-align: center;
-  margin-top: 5px; /* kleiner Abstand unter dem Button */
-  text-shadow: 0 0 5px #ff4d6d; /* optional, damit es auf Hintergrund gut lesbar ist */
-  pointer-events: none; /* verhindert, dass man den Text anklicken kann */
-}
+      font-size: 0.9em;
+      color: white;
+      text-align: center;
+      margin-top: 5px;
+      text-shadow: 0 0 5px #ff4d6d;
+      pointer-events: none;
+    }
 
-
-    /* Rosenblätter */
     .rose {
       position: absolute;
       width: 40px;
@@ -110,7 +107,7 @@
     // Ja-Button klick
     const yesBtn = document.getElementById("yes");
     yesBtn.addEventListener("click", () => {
-      alert('💖 Für immer mein Valentine!');
+      alert('💘 My forever Valentine!');
     });
   </script>
 
