@@ -32,15 +32,22 @@
     }
 
     #yes {
-      background: white;
-      color: hotpink;
-    }
+  background: white;
+  color: hotpink;
+  display: block;      /* sorgt dafür, dass die Buttons untereinander stehen */
+  margin: 0 auto;      /* zentriert horizontal */
+  margin-bottom: 20px; /* Abstand nach unten */
+}
 
-    #no {
-      position: absolute;
-      background: #ff4d6d;
-      color: white;
-    }
+#no {
+  background: #ff4d6d;
+  color: white;
+  display: block;
+  margin: 0 auto;       /* zentriert unterhalb der Ja-Taste */
+  margin-top: 10px;     /* Abstand über der Nein-Taste */
+  position: relative;   /* damit der Sprung-Effekt via JS noch funktioniert */
+}
+
   </style>
 </head>
 <body>
@@ -58,17 +65,19 @@
   <script>
     const noBtn = document.getElementById("no");
 
-    function moveButton() {
-      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
-    }
+function moveButton() {
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+  noBtn.style.position = "absolute";  // position absolut beim Sprung
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+}
 
-    noBtn.addEventListener("mouseover", moveButton);
-    noBtn.addEventListener("touchstart", moveButton);
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
   </script>
 
 </body>
 </html>
+
 
